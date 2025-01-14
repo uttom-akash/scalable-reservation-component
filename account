@@ -1,0 +1,347 @@
+{
+    "Items": [
+        {
+            "walletId": {
+                "S": "01719195597"
+            },
+            "product": {
+                "M": {
+                    "amount": {
+                        "S": "200"
+                    },
+                    "term": {
+                        "S": "MONTHLY"
+                    },
+                    "productId": {
+                        "S": "DSP_0004"
+                    },
+                    "tenure": {
+                        "S": "60"
+                    }
+                }
+            },
+            "purpose": {
+                "S": "testing if notification changes took place or not"
+            },
+            "savingsAccountCreateTime": {
+                "S": "2025-01-14 00:01:24:711 +0600"
+            },
+            "savingsId": {
+                "S": "20250114100101"
+            },
+            "onboardingType": {
+                "S": "SELF"
+            },
+            "walletNo": {
+                "S": "01719195597"
+            },
+            "savingsType": {
+                "S": "DPS"
+            },
+            "cycleStartDate": {
+                "S": "2025-02-10"
+            },
+            "subscriptionRequestId": {
+                "S": "20250114100101"
+            },
+            "organizationCode": {
+                "S": "IDLC"
+            },
+            "errorReason": {
+                "S": "404 : [{\"timestamp\":\"2025-01-13T12:01:25.764+00:00\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/savings-mock/idlc/api/send-kyc\"}]"
+            },
+            "nominee": {
+                "M": {
+                    "nidNumber": {
+                        "S": "1994987654333"
+                    },
+                    "id": {
+                        "S": "2b27b9e7-0daf-47ae-b75f-7e0a42ab38dd"
+                    },
+                    "dob": {
+                        "S": "2004-01-01"
+                    },
+                    "relation": {
+                        "S": "CHILD"
+                    }
+                }
+            },
+            "processing": {
+                "BOOL": false
+            },
+            "currentState": {
+                "S": "FI_SEND_KYC_FAILED"
+            },
+            "savingsAccountUpdateTime": {
+                "S": "2025-01-14 00:01:26:013 +0600"
+            },
+            "rppSubscriptionRequestId": {
+                "S": "20250114100101"
+            },
+            "status": {
+                "S": "FAILED"
+            },
+            "effectiveTenureCount": {
+                "S": "60"
+            }
+        },
+        {
+            "walletId": {
+                "S": "01719195597"
+            },
+            "product": {
+                "M": {
+                    "amount": {
+                        "S": "200"
+                    },
+                    "term": {
+                        "S": "MONTHLY"
+                    },
+                    "productId": {
+                        "S": "DSP_0004"
+                    },
+                    "tenure": {
+                        "S": "60"
+                    }
+                }
+            },
+            "purpose": {
+                "S": "testing if notification changes took place or not"
+            },
+            "savingsAccountCreateTime": {
+                "S": "2025-01-14 00:03:12:823 +0600"
+            },
+            "savingsId": {
+                "S": "20250114100102"
+            },
+            "onboardingType": {
+                "S": "SELF"
+            },
+            "walletNo": {
+                "S": "01719195597"
+            },
+            "savingsType": {
+                "S": "DPS"
+            },
+            "cycleStartDate": {
+                "S": "2025-02-09"
+            },
+            "subscriptionRequestId": {
+                "S": "20250114100102"
+            },
+            "organizationCode": {
+                "S": "IDLC"
+            },
+            "errorReason": {
+                "S": "404 : [{\"timestamp\":\"2025-01-13T12:03:13.181+00:00\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/savings-mock/idlc/api/send-kyc\"}]"
+            },
+            "nominee": {
+                "M": {
+                    "nidNumber": {
+                        "S": "1994987654333"
+                    },
+                    "id": {
+                        "S": "2b27b9e7-0daf-47ae-b75f-7e0a42ab38dd"
+                    },
+                    "dob": {
+                        "S": "2004-01-01"
+                    },
+                    "relation": {
+                        "S": "CHILD"
+                    }
+                }
+            },
+            "processing": {
+                "BOOL": false
+            },
+            "currentState": {
+                "S": "FI_SEND_KYC_FAILED"
+            },
+            "savingsAccountUpdateTime": {
+                "S": "2025-01-14 00:03:13:205 +0600"
+            },
+            "rppSubscriptionRequestId": {
+                "S": "20250114100102"
+            },
+            "status": {
+                "S": "FAILED"
+            },
+            "effectiveTenureCount": {
+                "S": "60"
+            }
+        },
+        {
+            "walletId": {
+                "S": "01719195597"
+            },
+            "product": {
+                "M": {
+                    "amount": {
+                        "S": "200"
+                    },
+                    "term": {
+                        "S": "MONTHLY"
+                    },
+                    "productId": {
+                        "S": "DSP_0004"
+                    },
+                    "tenure": {
+                        "S": "60"
+                    }
+                }
+            },
+            "purpose": {
+                "S": "testing if notification changes took place or not"
+            },
+            "savingsAccountCreateTime": {
+                "S": "2025-01-14 00:03:55:485 +0600"
+            },
+            "savingsId": {
+                "S": "20250114100103"
+            },
+            "onboardingType": {
+                "S": "SELF"
+            },
+            "walletNo": {
+                "S": "01719195597"
+            },
+            "savingsType": {
+                "S": "DPS"
+            },
+            "cycleStartDate": {
+                "S": "2025-02-15"
+            },
+            "subscriptionRequestId": {
+                "S": "20250114100103"
+            },
+            "organizationCode": {
+                "S": "IDLC"
+            },
+            "errorReason": {
+                "S": "404 : [{\"timestamp\":\"2025-01-13T12:03:55.871+00:00\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/savings-mock/idlc/api/send-kyc\"}]"
+            },
+            "nominee": {
+                "M": {
+                    "nidNumber": {
+                        "S": "1994987654333"
+                    },
+                    "id": {
+                        "S": "2b27b9e7-0daf-47ae-b75f-7e0a42ab38dd"
+                    },
+                    "dob": {
+                        "S": "2004-01-01"
+                    },
+                    "relation": {
+                        "S": "CHILD"
+                    }
+                }
+            },
+            "processing": {
+                "BOOL": false
+            },
+            "currentState": {
+                "S": "FI_SEND_KYC_FAILED"
+            },
+            "savingsAccountUpdateTime": {
+                "S": "2025-01-14 00:03:55:897 +0600"
+            },
+            "rppSubscriptionRequestId": {
+                "S": "20250114100103"
+            },
+            "status": {
+                "S": "FAILED"
+            },
+            "effectiveTenureCount": {
+                "S": "60"
+            }
+        },
+        {
+            "walletId": {
+                "S": "01719195597"
+            },
+            "product": {
+                "M": {
+                    "amount": {
+                        "S": "200"
+                    },
+                    "term": {
+                        "S": "MONTHLY"
+                    },
+                    "productId": {
+                        "S": "DSP_0004"
+                    },
+                    "tenure": {
+                        "S": "60"
+                    }
+                }
+            },
+            "purpose": {
+                "S": "testing if notification changes took place or not"
+            },
+            "savingsAccountCreateTime": {
+                "S": "2025-01-14 16:44:51:683 +0600"
+            },
+            "savingsId": {
+                "S": "20250114100104"
+            },
+            "onboardingType": {
+                "S": "SELF"
+            },
+            "walletNo": {
+                "S": "01719195597"
+            },
+            "savingsType": {
+                "S": "DPS"
+            },
+            "cycleStartDate": {
+                "S": "2025-02-17"
+            },
+            "subscriptionRequestId": {
+                "S": "20250114100104"
+            },
+            "organizationCode": {
+                "S": "IDLC"
+            },
+            "errorReason": {
+                "S": "404 : [{\"timestamp\":\"2025-01-14T04:50:00.195+00:00\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/savings-mock/idlc/api/send-kyc\"}]"
+            },
+            "nominee": {
+                "M": {
+                    "nidNumber": {
+                        "S": "1994987654333"
+                    },
+                    "id": {
+                        "S": "2b27b9e7-0daf-47ae-b75f-7e0a42ab38dd"
+                    },
+                    "dob": {
+                        "S": "2004-01-01"
+                    },
+                    "relation": {
+                        "S": "CHILD"
+                    }
+                }
+            },
+            "processing": {
+                "BOOL": false
+            },
+            "currentState": {
+                "S": "FI_SEND_KYC_FAILED"
+            },
+            "savingsAccountUpdateTime": {
+                "S": "2025-01-14 16:50:00:347 +0600"
+            },
+            "rppSubscriptionRequestId": {
+                "S": "20250114100104"
+            },
+            "effectiveTenureCount": {
+                "S": "60"
+            },
+            "status": {
+                "S": "FAILED"
+            }
+        }
+    ],
+    "Count": 4,
+    "ScannedCount": 4,
+    "ConsumedCapacity": null
+}

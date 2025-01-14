@@ -5,9 +5,9 @@ import org.application.dtos.BlogView;
 import org.domain.models.Blog;
 import org.springframework.data.repository.CrudRepository;
 
-public interface BlogRepository extends CrudRepository<Blog, String>
+public interface BlogRepository
 {
-//    String create(Blog blog);
+    public String create(Blog blog);
 //
 //    String get();
 //
