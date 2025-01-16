@@ -2,6 +2,7 @@ package org.application.dtos;
 
 import org.domain.models.ReservationStatus;
 import org.domain.models.RoomType;
+import software.amazon.ion.Decimal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,15 +14,15 @@ public class ReservationDto {
 
         public String hotelId;
 
-        public RoomType roomType;
+        public String roomType;
 
         public LocalDate checkInDate;
 
         public LocalDate checkOutDate;
 
-        public int numberOfRooms;
+        public int quantity;
 
-        public BigDecimal unitPrice;
+        public Decimal unitPrice;
 
         public String specialRequests;
 

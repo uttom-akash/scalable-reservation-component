@@ -1,35 +1,38 @@
 package org.domain.models;
 
+import software.amazon.ion.Decimal;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Reservation {
 
-    private Long reservationId;
+    public String reservationId;
 
-    private String guestId;
+    public String guestId;
 
-    private String hotelId;
+    public String hotelId;
 
-    private RoomType roomType;
+    public RoomType roomType;
 
-    private LocalDate checkInDate;
+    public LocalDate checkInDate;
 
-    private LocalDate checkOutDate;
+    public LocalDate checkOutDate;
 
-    private int numGuests;
+    public int quantity;
 
-    private BigDecimal totalPrice;
+    public Decimal unitPrice;
 
-    private ReservationStatus reservationStatus;
+    public ReservationStatus reservationStatus;
 
-    private LocalDateTime createdAt;
+    public LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    public LocalDateTime updatedAt;
 
-    private String specialRequests;
+    public String specialRequests;
 
-    private String additionalInfo;
+    public String additionalInfo;
 }
 
