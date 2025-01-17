@@ -17,12 +17,12 @@ public class ReservationMgmtConsumerServiceImpl implements ReservationMgmtConsum
         System.out.println("Received reservation message: " + message);
     }
 
-    public void handleCancellationMessage(ReservationMgmtEvent message) {
+    public void handleCancellationMessage(String reservationId) {
         // validate
 
         // cancel
 
-        System.out.println("Received cancellation message: " + message);
+        System.out.println("Received cancellation message id: " + reservationId);
     }
 
 }

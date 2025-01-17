@@ -1,13 +1,13 @@
 package org.application.dtos;
 
-import org.domain.models.ReservationStatus;
-import org.domain.models.RoomType;
-import software.amazon.ion.Decimal;
 
-import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReservationDto {
 
         public String guestId;
@@ -22,7 +22,7 @@ public class ReservationDto {
 
         public int quantity;
 
-        public Decimal unitPrice;
+        public double unitPrice;
 
         public String specialRequests;
 

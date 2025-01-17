@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ReservationMgmtRepository
 {
-    public String create(Reservation reservation);
+    String create(Reservation reservation);
 
     Reservation get(String reservationId);
 

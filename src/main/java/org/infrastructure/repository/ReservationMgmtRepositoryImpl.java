@@ -3,13 +3,8 @@ package org.infrastructure.repository;
 import org.domain.models.Reservation;
 import org.domain.repositories.ReservationMgmtRepository;
 import org.springframework.stereotype.Repository;
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
-import software.amazon.awssdk.services.dynamodb.model.DynamoDbException;
-import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class ReservationMgmtRepositoryImpl implements ReservationMgmtRepository {

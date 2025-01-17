@@ -1,11 +1,10 @@
 package org.domain.models;
 
-import software.amazon.ion.Decimal;
+import org.domain.contstants.ReservationStatus;
+import org.domain.contstants.RoomType;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class Reservation {
 
@@ -23,7 +22,7 @@ public class Reservation {
 
     public int quantity;
 
-    public Decimal unitPrice;
+    public double unitPrice;
 
     public ReservationStatus reservationStatus;
 

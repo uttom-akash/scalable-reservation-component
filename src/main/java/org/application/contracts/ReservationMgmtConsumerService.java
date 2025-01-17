@@ -6,5 +6,5 @@ public interface ReservationMgmtConsumerService {
 
     void handleReservationMessage(ReservationMgmtEvent message);
 
-    void handleCancellationMessage(ReservationMgmtEvent message);
+    void handleCancellationMessage(String reservationId);
 }

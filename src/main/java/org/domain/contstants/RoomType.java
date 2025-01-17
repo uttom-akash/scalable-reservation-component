@@ -1,4 +1,4 @@
-package org.domain.models;
+package org.domain.contstants;
 
 public enum RoomType{
     SMALL,

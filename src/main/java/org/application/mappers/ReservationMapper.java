@@ -1,9 +1,9 @@
 package org.application.mappers;
 
 import org.application.dtos.ReservationDto;
+import org.domain.contstants.ReservationStatus;
+import org.domain.contstants.RoomType;
 import org.domain.models.Reservation;
-import org.domain.models.ReservationStatus;
-import org.domain.models.RoomType;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
