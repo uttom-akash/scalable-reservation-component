@@ -1,4 +1,4 @@
-# scalable-booking-service-component
+# Scalable Reservation Service Component
 
 ### Serialized Event Processing:
 
