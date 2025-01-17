@@ -15,3 +15,20 @@ services:
       - DEBUG=1
     volumes:
       - ./localstack-data:/var/lib/localstack
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - redis-net
+    volumes:
+      - redis-data:/data
+
+networks:
+  redis-net:
+    driver: bridge
+
+volumes:
+  redis-data:

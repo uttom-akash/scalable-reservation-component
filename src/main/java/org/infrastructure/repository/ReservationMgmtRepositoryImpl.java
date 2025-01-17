@@ -1,5 +1,6 @@
 package org.infrastructure.repository;
 
+import org.domain.contstants.RoomType;
 import org.domain.models.Reservation;
 import org.domain.repositories.ReservationMgmtRepository;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,11 @@ public class ReservationMgmtRepositoryImpl implements ReservationMgmtRepository 
 
     @Override
     public Reservation get(String reservationId) {
-        return null;
+        return Reservation.builder()
+                .reservationId(reservationId)
+                .hotelId("string")
+                .roomType(RoomType.SMALL)
+                .build();
     }
 
     @Override

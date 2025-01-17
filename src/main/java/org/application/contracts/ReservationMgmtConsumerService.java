@@ -1,10 +1,11 @@
 package org.application.contracts;
 
-import org.application.events.ReservationMgmtEvent;
+import org.application.events.RoomCancellationEvent;
+import org.application.events.RoomReservationEvent;
 
 public interface ReservationMgmtConsumerService {
 
-    void handleReservationMessage(ReservationMgmtEvent message);
+    void handleReservationMessage(RoomReservationEvent message);
 
-    void handleCancellationMessage(String reservationId);
+    void handleCancellationMessage(RoomCancellationEvent message);
 }

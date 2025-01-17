@@ -16,3 +16,10 @@ cloud:
 
 server:
   port: 8089
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password: ""  # (Optional)
+    database: 0

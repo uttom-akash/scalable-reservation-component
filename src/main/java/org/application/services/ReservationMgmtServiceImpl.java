@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.application.contracts.ReservationMgmtService;
 import org.application.dtos.ReservationDto;
-import org.application.events.ReservationMgmtEvent;
-import org.application.events.ReservationMgmtEventType;
+import org.application.events.RoomCancellationEvent;
+import org.application.events.RoomReservationEvent;
 import org.application.mappers.ReservationMapper;
 import org.domain.contstants.ReservationStatus;
 import org.domain.repositories.ReservationMgmtRepository;
@@ -14,6 +14,7 @@ import org.infrastructure.clients.sqs.SQSFifoClient;
 import org.infrastructure.clients.sqs.SQSFifoMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import software.amazon.awssdk.services.sqs.endpoints.internal.Value;
 
 import java.util.UUID;
 
@@ -22,7 +23,8 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
 
     private final ReservationMgmtRepository reservationMgmtRepository;
     private final SQSFifoClient sqsClient;
-    private final String HotelBookingManagementQueue = "ReservationMgmtQueue.fifo";
+    private final String roomReservationQueue = "RoomReservationQueue.fifo";
+    private final String roomCancellationQueue = "RoomCancellationQueue.fifo";
 
     @Autowired
     public ReservationMgmtServiceImpl(ReservationMgmtRepository reservationMgmtRepository, SQSFifoClient sqsClient) {
@@ -34,10 +36,8 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
         var objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        var message = objectMapper.writeValueAsString(ReservationMgmtEvent.builder()
-                .reservationMgmtEventType(ReservationMgmtEventType.RESERVE)
+        var message = objectMapper.writeValueAsString(RoomCancellationEvent.builder()
                 .reservationId(reservationId)
-                .reservationDto(reservationDto)
                 .build());
 
         return SQSFifoMessage
@@ -48,14 +48,15 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
                 .build();
     }
 
+
     @Override
     public String reserve(ReservationDto reservationDto) throws Exception {
 
         var reservationId = UUID.randomUUID().toString();
 
-        var groupId = getProcessingGroupId(reservationDto.hotelId, reservationDto.roomType);
-
         var reservation = ReservationMapper.INSTANCE.toReservation(reservationDto);
+
+        var groupId = reservation.getGroupId();
 
         reservation.reservationId = reservationId;
 
@@ -63,16 +64,24 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
 
         reservationMgmtRepository.create(reservation);
 
-        SQSFifoMessage sqsFifoMessage = prepareSqsFifoMessage(reservationDto, reservationId, groupId);
+        var objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
 
-        sqsClient.sendFifoMessage(HotelBookingManagementQueue, sqsFifoMessage);
+        var message = objectMapper.writeValueAsString(RoomReservationEvent.builder()
+                .reservationId(reservationId)
+                .build());
+
+        var sqsFifoMessage = SQSFifoMessage
+                .builder()
+                .deduplicationId(reservationId)
+                .groupId(groupId)
+                .payload(message)
+                .build();
+
+        sqsClient.sendFifoMessage(roomReservationQueue, sqsFifoMessage);
 
         return reservationId;
 
-    }
-
-    private String getProcessingGroupId(String hotelId, String roomType) {
-        return hotelId + "|" + roomType;
     }
 
     @Override
@@ -80,10 +89,22 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
 
         var reservation = reservationMgmtRepository.get(reservationId);
 
-        var groupId = getProcessingGroupId(reservation.hotelId, reservation.roomType.toString());
+        var groupId = reservation.getGroupId();
 
-        SQSFifoMessage sqsFifoMessage = prepareSqsFifoMessage(null, reservationId, groupId);
+        var objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
 
-        sqsClient.sendFifoMessage(HotelBookingManagementQueue, sqsFifoMessage);
+        var message = objectMapper.writeValueAsString(RoomCancellationEvent.builder()
+                .reservationId(reservationId)
+                .build());
+
+        var sqsFifoMessage = SQSFifoMessage
+                .builder()
+                .deduplicationId(reservationId)
+                .groupId(groupId)
+                .payload(message)
+                .build();
+
+        sqsClient.sendFifoMessage(roomCancellationQueue, sqsFifoMessage);
     }
 }
