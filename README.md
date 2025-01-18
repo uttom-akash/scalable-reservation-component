@@ -1,5 +1,71 @@
 # Scalable Reservation Service Component
 
+This design guarantees consistency, avoids race conditions, and ensures scalable processing with Redis-based locking.
+
+### Installation
+```declarative
+
+cd scalable-reservation-service-component
+
+./src/main/resources/setup/setup.sh
+
+cd scalable-reservation-service-component/src/main/java/org/api
+
+mvn spring-boot:run
+
+```
+
+### Current Diagram (With Lock)
+```plaintext
+                          +----------------------+
+                          |    API (Producer)    |
+                          |----------------------|
+                          |  RoomReservation     |
+                          |  RoomCancellation    |
+                          +----------------------+
+                                    |
+                                    v
+                     +-------------------------------+
+                     |       Message Queues          |
+                     |-------------------------------|
+                     |  RoomReservationQueue         |
+                     |  RoomCancellationQueue        |
+                     +-------------------------------+
+                                    |
+                                    v
+                  +-------------------------------------+
+                  |           Consumers                 |
+                  |------------------------------------ |
+                  |  1. Fetch Event from Queue          |
+                  |  2. Acquire fine-grained Redis Lock |
+                  |     (hotelId + roomType)            |
+                  |  3. Process Event                   |
+                  |  4. Release Redis Lock              |
+                  +-------------------------------------+
+                                    |
+                                    v
+                +--------------------------------------+
+                |              Redis                   |
+                |--------------------------------------|
+                |  Lock: hotelId + roomType            |
+                +--------------------------------------+
+
+                      +---------------------+
+                      |  Dead Letter Queue  |
+                      +---------------------+
+                      
+```
+
+
+### Components Explained
+- Producers: Publish reservation and cancellation events.
+- Message Queues: Hold events for processing by consumers.
+- Consumers: Fetch events, acquire a lock from Redis using hotelId + roomType, process the event, and release the lock.
+- Redis: Ensures no two consumers process the same hotelId + roomType simultaneously.
+
+
+## Future Design (Lock Free)
+
 ### Serialized Event Processing:
 
 - Ensures all reservation and cancellation events for a specific hotel and room type are processed in a strict order.
