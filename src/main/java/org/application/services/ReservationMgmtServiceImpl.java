@@ -27,7 +27,8 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
     private final String roomCancellationQueue = "RoomCancellationQueue.fifo";
 
     @Autowired
-    public ReservationMgmtServiceImpl(ReservationMgmtRepository reservationMgmtRepository, SQSFifoClient sqsClient) {
+    public ReservationMgmtServiceImpl(ReservationMgmtRepository reservationMgmtRepository,
+                                      SQSFifoClient sqsClient) {
         this.reservationMgmtRepository = reservationMgmtRepository;
         this.sqsClient = sqsClient;
     }
@@ -62,7 +63,7 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
 
         reservation.reservationStatus = ReservationStatus.INITIATED;
 
-        reservationMgmtRepository.create(reservation);
+        reservationMgmtRepository.save(reservation);
 
         var objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
@@ -87,7 +88,8 @@ public class ReservationMgmtServiceImpl implements ReservationMgmtService {
     @Override
     public void cancel(String reservationId) throws Exception {
 
-        var reservation = reservationMgmtRepository.get(reservationId);
+        var reservation = reservationMgmtRepository.findById(reservationId)
+                .orElseThrow();
 
         var groupId = reservation.getGroupId();
 

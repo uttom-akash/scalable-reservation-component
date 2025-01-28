@@ -23,3 +23,24 @@ spring:
     port: 6379
     password: ""  # (Optional)
     database: 0
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/booking
+    username: sa
+    password: sa12345
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor: TRACE
+#      com:
+#        myapp: DEBUG # Adjust 'myapp' to your package name

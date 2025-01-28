@@ -1,18 +1,11 @@
 package org.domain.repositories;
-
 import org.domain.models.Reservation;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ReservationMgmtRepository
+public interface ReservationMgmtRepository extends JpaRepository<Reservation, String>
 {
-    String create(Reservation reservation);
-
-    Reservation get(String reservationId);
-
-    List<Reservation> get();
-
-    Reservation update(Reservation reservation);
-
-    void delete(String reservationId);
+//     List<Reservation> get();
 }
+

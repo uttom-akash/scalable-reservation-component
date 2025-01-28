@@ -8,6 +8,7 @@ import org.domain.repositories.ReservationMgmtRepository;
 import org.infrastructure.concurrency.ConcurrencyTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,7 @@ public class ReservationMgmtConsumerServiceImpl implements ReservationMgmtConsum
     private final ReservationMgmtRepository reservationMgmtRepository;
     private final ConcurrencyTracker concurrencyTracker;
 
+    @Autowired
     public ReservationMgmtConsumerServiceImpl(ReservationMgmtRepository reservationMgmtRepository, ConcurrencyTracker redisClient) {
         this.reservationMgmtRepository = reservationMgmtRepository;
         this.concurrencyTracker = redisClient;
@@ -25,7 +27,7 @@ public class ReservationMgmtConsumerServiceImpl implements ReservationMgmtConsum
 
     public void handleReservationMessage(RoomReservationEvent message) {
 
-        var reservation = reservationMgmtRepository.get(message.reservationId);
+        var reservation = reservationMgmtRepository.findById(message.reservationId).orElseThrow();
 
         var resourceKey = createResourceKey(reservation);
 
@@ -50,7 +52,7 @@ public class ReservationMgmtConsumerServiceImpl implements ReservationMgmtConsum
     }
 
     public void handleCancellationMessage(RoomCancellationEvent message) {
-        var reservation = reservationMgmtRepository.get(message.reservationId);
+        var reservation = reservationMgmtRepository.findById(message.reservationId).orElseThrow();
 
         var resourceKey = createResourceKey(reservation);
 

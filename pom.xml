@@ -35,12 +35,13 @@
 
     <dependencies>
 
-        <!--        &lt;!&ndash; AWS SDK for DynamoDB &ndash;&gt;-->
+        <!-- AWS SDK for DynamoDB -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
             <version>2.29.50</version>
         </dependency>
+
         <!-- Spring Data DynamoDB (Optional) -->
         <dependency>
             <groupId>com.github.derjust</groupId>
@@ -48,45 +49,24 @@
             <version>5.0.4</version> <!-- Use appropriate version -->
         </dependency>
 
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>3.0.2</version> <!-- Use the latest version -->
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>8.0.0.Final</version> <!-- Use the latest version -->
-        </dependency>
-
+        <!-- OpenAPI for Spring Boot -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.1.0</version>
         </dependency>
 
+        <!-- Spring Boot Web Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>io.awspring.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-aws-starter</artifactId>-->
-        <!--        </dependency>-->
-
+        <!-- AWS SQS Dependencies -->
         <dependency>
             <groupId>io.awspring.cloud</groupId>
             <artifactId>spring-cloud-aws-starter-sqs</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-aws-messaging</artifactId>
-            <version>2.2.6.RELEASE</version> <!-- Replace with the version you are using -->
-        </dependency>
-
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
@@ -94,16 +74,11 @@
             <version>2.20.0</version> <!-- Replace with the latest stable version -->
         </dependency>
 
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sqs</artifactId>
-            <version>1.12.572</version> <!-- Use a compatible version -->
-        </dependency>
-
+        <!-- Lombok (Provided Scope) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version> <!-- Use the latest version -->
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
 
@@ -111,23 +86,43 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>1.5.5.Final</version> <!-- Use the latest version -->
+            <version>1.5.5.Final</version>
         </dependency>
 
         <!-- MapStruct Processor -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.5.5.Final</version> <!-- Use the latest version -->
+            <version>1.5.5.Final</version>
             <scope>provided</scope>
         </dependency>
 
+        <!-- Redis Support for Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!-- Spring Boot JPA (For PostgreSQL) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
+        <!-- PostgreSQL Driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.2</version>
+        </dependency>
+
+<!--        &lt;!&ndash; Hibernate Core &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.hibernate</groupId>-->
+<!--            <artifactId>hibernate-core</artifactId>-->
+<!--            <version>6.3.0.Final</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 
     </dependencies>
 
